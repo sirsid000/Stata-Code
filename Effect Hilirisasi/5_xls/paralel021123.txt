@@ -1,0 +1,25 @@
+		(1)	(2)
+VARIABLES	LABELS	model3	model4
+			
+1o.smelpretend	1 daerah smelter nikel pretend = 1, omitted	-	-
+			
+tahun	tahun observasi	-0.021	0.160***
+		(0.01)	(0.03)
+0b.smelpretend#co.tahun		0.000	0.000
+		(0.00)	(0.00)
+1.smelpretend#c.tahun		-0.011	0.050
+		(0.02)	(0.06)
+tam	jumlah tambang nikel beroperasi	0.021	0.059
+		(0.04)	(0.10)
+lngovexp	ln total pengeluaran pemerintah rupiah	0.123**	-0.095
+		(0.06)	(0.13)
+lnagri	ln pdrb berlaku sektor pertanian per kapita rupiah	0.303***	0.694***
+		(0.06)	(0.13)
+Constant	Constant	54.538**	-323.508***
+		(25.48)	(59.93)
+			
+Observations		164	164
+R-squared		0.611	0.796
+Number of idkab		55	55
+Standard errors in parentheses			
+*** p<0.01, ** p<0.05, * p<0.1			

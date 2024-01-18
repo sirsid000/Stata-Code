@@ -1,0 +1,75 @@
+		(1)	(2)
+VARIABLES	LABELS	model1	model2
+			
+1.aktnikel	1 daerah aktivitas nikel = 1	-0.114	0.033
+		(0.08)	(0.04)
+2006bn.tahun	tahun observasi = 2006b,	0.882***	-1.252***
+		(0.06)	(0.03)
+2007.tahun	tahun observasi = 2007	0.884***	-1.245***
+		(0.07)	(0.03)
+2008.tahun	tahun observasi = 2008	0.775***	-0.718***
+		(0.09)	(0.03)
+2009.tahun	tahun observasi = 2009	0.774***	-0.618***
+		(0.09)	(0.04)
+2010.tahun	tahun observasi = 2010	0.762***	-0.631***
+		(0.07)	(0.04)
+2011.tahun	tahun observasi = 2011	0.175***	-0.280***
+		(0.02)	(0.02)
+2012.tahun	tahun observasi = 2012	0.147***	-0.324***
+		(0.04)	(0.02)
+2013.tahun	tahun observasi = 2013	0.151***	-0.299***
+		(0.03)	(0.02)
+2014o.tahun	tahun observasi = 2014, omitted	-	-
+			
+0b.aktnikel#2006bno.tahun		0.000	0.000
+		(0.00)	(0.00)
+0b.aktnikel#2007o.tahun		0.000	0.000
+		(0.00)	(0.00)
+0b.aktnikel#2008o.tahun		0.000	0.000
+		(0.00)	(0.00)
+0b.aktnikel#2009o.tahun		0.000	0.000
+		(0.00)	(0.00)
+0b.aktnikel#2010o.tahun		0.000	0.000
+		(0.00)	(0.00)
+0b.aktnikel#2011o.tahun		0.000	0.000
+		(0.00)	(0.00)
+0b.aktnikel#2012o.tahun		0.000	0.000
+		(0.00)	(0.00)
+0b.aktnikel#2013o.tahun		0.000	0.000
+		(0.00)	(0.00)
+0b.aktnikel#2014o.tahun		0.000	0.000
+		(0.00)	(0.00)
+1o.aktnikel#2006bno.tahun		0.000	0.000
+		(0.00)	(0.00)
+1o.aktnikel#2007o.tahun		0.000	0.000
+		(0.00)	(0.00)
+1.aktnikel#2008.tahun		0.225***	0.041
+		(0.07)	(0.04)
+1.aktnikel#2009.tahun		0.064	0.051
+		(0.08)	(0.08)
+1.aktnikel#2010.tahun		0.105	0.018
+		(0.07)	(0.06)
+1.aktnikel#2011.tahun		0.122**	0.065
+		(0.06)	(0.04)
+1.aktnikel#2012.tahun		0.099*	0.041
+		(0.05)	(0.04)
+1.aktnikel#2013.tahun		0.055	0.003
+		(0.07)	(0.03)
+1o.aktnikel#2014o.tahun		0.000	0.000
+		(0.00)	(0.00)
+smel	jumlah smelter nikel beroperasi	0.016	0.131***
+		(0.04)	(0.04)
+tam	jumlah tambang nikel beroperasi	0.006**	0.003
+		(0.00)	(0.00)
+lngovexp	ln total pengeluaran pemerintah rupiah per kapita	0.419***	0.027
+		(0.09)	(0.04)
+lnagri	ln pdrb berlaku sektor pertanian per kapita rupiah	0.164***	0.055**
+		(0.06)	(0.03)
+Constant	Constant	7.366***	14.567***
+		(0.96)	(0.49)
+			
+Observations		585	585
+R-squared		0.986	0.950
+Number of idkab		73	73
+Robust standard errors in parentheses			
+*** p<0.01, ** p<0.05, * p<0.1			

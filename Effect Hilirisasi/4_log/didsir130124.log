@@ -1,0 +1,165 @@
+----------------------------------------------------------------------------------------------------------------------------------------------
+      name:  <unnamed>
+       log:  C:\Users\siddi\Documents\Tesis\statatodo\4_log/didsir130124.log
+  log type:  text
+ opened on:  14 Jan 2024, 00:01:52
+
+. 
+end of do-file
+
+. do "C:\Users\siddi\AppData\Local\Temp\STD4058_000000.tmp"
+
+. //......................................................//
+. clear all
+
+. 
+. use spasial ,replace
+
+. 
+. //matrix pembobot inverse
+. spmatrix create idistance Wi
+
+. spmatrix summarize Wi
+
+Weighting matrix Wi
+---------------------------------------
+           Type |            idistance
+  Normalization |             spectral
+      Dimension |              81 x 81
+Elements        |
+   minimum      |                    0
+   minimum > 0  |               .00208
+   mean         |             .0116396
+   max          |             .3219147
+---------------------------------------
+
+. 
+. spmatrix dir
+
+------------------------------------------------------------------------
+   Weighting matrix name           N x N      Type         Normalization
+------------------------------------------------------------------------
+                      Wi         81 x 81    idistance        spectral
+------------------------------------------------------------------------
+
+. 
+. //gabung dengan utam
+. merge 1:m idkab using "$dta/setsmelter.dta"
+
+    Result                      Number of obs
+    -----------------------------------------
+    Not matched                             0
+    Matched                             1,296  (_merge==3)
+    -----------------------------------------
+
+. bro
+
+. 
+. //Aktivasi Map
+. grmap, activate
+grmap already activated
+
+. 
+. //set panel
+. xtset _ID tahun, yearly
+
+Panel variable: _ID (strongly balanced)
+ Time variable: tahun, 2006 to 2021
+         Delta: 1 year
+
+. 
+end of do-file
+
+. do "C:\Users\siddi\AppData\Local\Temp\STD4058_000000.tmp"
+
+. spxtregress lnpdrbcap i.nondsmel smel tam lngovexp lnagri, fe cl(idkab) dvarlag(Wi) ivarlag(Wi: smel tam lngovexp lnagri)
+option cl(idkab) not allowed
+r(198);
+
+end of do-file
+
+r(198);
+
+. do "C:\Users\siddi\AppData\Local\Temp\STD4058_000000.tmp"
+
+. xtreg lnpdrbcap i.nondsmel smel tam lngovexp lnagri, fe
+
+Fixed-effects (within) regression               Number of obs     =      1,146
+Group variable: _ID                             Number of groups  =         81
+
+R-squared:                                      Obs per group:
+     Within  = 0.8218                                         min =          5
+     Between = 0.0043                                         avg =       14.1
+     Overall = 0.3030                                         max =         16
+
+                                                F(5,1060)         =     977.71
+corr(u_i, Xb) = -0.4233                         Prob > F          =     0.0000
+
+------------------------------------------------------------------------------
+   lnpdrbcap | Coefficient  Std. err.      t    P>|t|     [95% conf. interval]
+-------------+----------------------------------------------------------------
+  1.nondsmel |   .2877271   .0665239     4.33   0.000     .1571936    .4182606
+        smel |   .1343576   .0172102     7.81   0.000     .1005878    .1681275
+         tam |  -.0107058   .0030929    -3.46   0.001    -.0167748   -.0046368
+    lngovexp |   1.132349   .0264318    42.84   0.000     1.080485    1.184214
+      lnagri |  -.1514268   .0281736    -5.37   0.000    -.2067092   -.0961444
+       _cons |   2.078392   .2376931     8.74   0.000     1.611989    2.544794
+-------------+----------------------------------------------------------------
+     sigma_u |  .57673682
+     sigma_e |   .2265714
+         rho |  .86630221   (fraction of variance due to u_i)
+------------------------------------------------------------------------------
+F test that all u_i=0: F(80, 1060) = 63.19                   Prob > F = 0.0000
+
+. xtcsd, pes abs
+ 
+ 
+Pesaran's test of cross sectional independence =   129.921, Pr = 0.0000
+ 
+Average absolute value of the off-diagonal elements =     0.650
+
+. 
+end of do-file
+
+. do "C:\Users\siddi\AppData\Local\Temp\STD4058_000000.tmp"
+
+. xtreg lnexpcap i.nondsmel smel tam lngovexp lnagri, fe
+
+Fixed-effects (within) regression               Number of obs     =      1,146
+Group variable: _ID                             Number of groups  =         81
+
+R-squared:                                      Obs per group:
+     Within  = 0.3597                                         min =          5
+     Between = 0.0831                                         avg =       14.1
+     Overall = 0.0041                                         max =         16
+
+                                                F(5,1060)         =     119.10
+corr(u_i, Xb) = -0.8968                         Prob > F          =     0.0000
+
+------------------------------------------------------------------------------
+    lnexpcap | Coefficient  Std. err.      t    P>|t|     [95% conf. interval]
+-------------+----------------------------------------------------------------
+  1.nondsmel |   -.379726   .1210053    -3.14   0.002     -.617163   -.1422889
+        smel |   .0669735   .0313048     2.14   0.033      .005547       .1284
+         tam |   .0420185    .005626     7.47   0.000     .0309792    .0530579
+    lngovexp |  -1.022799   .0480787   -21.27   0.000    -1.117139   -.9284588
+      lnagri |   .9780992   .0512471    19.09   0.000     .8775419    1.078657
+       _cons |   15.89497   .4323577    36.76   0.000      15.0466    16.74334
+-------------+----------------------------------------------------------------
+     sigma_u |  .82994239
+     sigma_e |  .41212754
+         rho |  .80219132   (fraction of variance due to u_i)
+------------------------------------------------------------------------------
+F test that all u_i=0: F(80, 1060) = 10.10                   Prob > F = 0.0000
+
+. xtcsd, pes abs
+ 
+ 
+Pesaran's test of cross sectional independence =   140.626, Pr = 0.0000
+ 
+Average absolute value of the off-diagonal elements =     0.720
+
+. 
+end of do-file
+
+. exit, clear
